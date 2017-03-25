@@ -1,0 +1,8 @@
+# gem dependency
+.bundle
+
+# credential
+config/config_env.rb
+
+# dev sqlite database
+db/*.*
