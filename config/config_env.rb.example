@@ -1,0 +1,9 @@
+config_env :development, :test do
+  set 'ACCOUNT', '[Account for basic auth]'
+  set 'PASSWORD', '[Password for basic auth]'
+end
+
+config_env :production do
+  set 'ACCOUNT', '[Account for shipyard service]'
+  set 'PASSWORD', '[Password for shipyard service]'
+end
