@@ -2,6 +2,8 @@ require 'sinatra'
 require 'json'
 
 class YoubikeAPI < Sinatra::Base
+  enable :logging
+
   helpers do
     def protected!
       return if authorized?
@@ -26,7 +28,7 @@ class YoubikeAPI < Sinatra::Base
   end
 
   get '/' do
-    'Hello, This is Youbike API running. Current API version is v1.'
+    'Hello, This is Ubike API running. Current API version is v1.'
   end
 
   post '/v1/update' do
@@ -55,7 +57,7 @@ class YoubikeAPI < Sinatra::Base
     lat = params['lat']
     lng = params['lng']
 
-    # begin
+    begin
       # check lat lng valid
       if lat_is_invalid?(lat) || lng_is_invalid?(lng)
         return JSON.pretty_generate({ "code": -1,  "result": []})
@@ -75,9 +77,10 @@ class YoubikeAPI < Sinatra::Base
         "code": 0,
         "result": stations.map {|n| n}
       })
-    # rescue
-    #   JSON.pretty_generate({ "code": -3,  "result": []})
-    # end
+    rescue => e
+      logger.info "FAILED to find nearest ubike stations: #{e.inspect}"
+      JSON.pretty_generate({ "code": -3,  "result": []})
+    end
   end
 
 end
