@@ -26,3 +26,9 @@ namespace :db do
     load './db/seeds/accounts.rb'
   end
 end
+
+desc 'Run all the tests'
+Rake::TestTask.new(name=:spec) do |t|
+  t.warning = false
+  t.pattern = 'specs/*_spec.rb'
+end
