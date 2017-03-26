@@ -10,8 +10,8 @@ class Station < Sequel::Model
                       :bemp, :act
   # scope
   dataset_module do
-    def by_sna(sna)
-      where(:sna => sna).first
+    def by_sno(sno)
+      where(:sno => sno).first
     end
 
     def available

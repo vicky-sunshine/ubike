@@ -1,6 +1,6 @@
 require_relative './spec_helper'
 
-describe 'Test Model Staion' do
+describe 'Test Model Staion Dataset Scope' do
   lat = 25.0316
   lng = 121.5744
 
