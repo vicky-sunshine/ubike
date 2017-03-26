@@ -55,7 +55,7 @@ class YoubikeAPI < Sinatra::Base
     lat = params['lat']
     lng = params['lng']
 
-    begin
+    # begin
       # check lat lng valid
       if lat_is_invalid?(lat) || lng_is_invalid?(lng)
         return JSON.pretty_generate({ "code": -1,  "result": []})
@@ -75,9 +75,9 @@ class YoubikeAPI < Sinatra::Base
         "code": 0,
         "result": stations.map {|n| n}
       })
-    rescue
-      JSON.pretty_generate({ "code": -3,  "result": []})
-    end
+    # rescue
+    #   JSON.pretty_generate({ "code": -3,  "result": []})
+    # end
   end
 
 end
