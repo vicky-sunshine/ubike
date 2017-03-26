@@ -19,3 +19,7 @@ end
 def random_not_in_taipei_lng
   ([*-180..180] - [121]).sample
 end
+
+def distance(user_lat, user_lng, lat, lng)
+  ((user_lat-lat)*(user_lat-lat)+(user_lng-lng)*(user_lng-lng))
+end

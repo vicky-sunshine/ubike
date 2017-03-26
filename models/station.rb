@@ -11,7 +11,7 @@ class Station < Sequel::Model
   # scope
   dataset_module do
     def by_sna(sna)
-      where(:sna => sna)
+      where(:sna => sna).first
     end
 
     def available
@@ -23,28 +23,28 @@ class Station < Sequel::Model
     end
 
     def empty
-      where(:sbi => 0)
+      available.where(:sbi => 0)
     end
 
     def not_empty
-      filter{sbi > 0}
+      available.filter{sbi > 0}
     end
 
     def not_full
-      filter{bemp > 0}
+      available.filter{bemp > 0}
     end
 
     def full
-      where(:bemp => 0)
+      available.where(:bemp => 0)
     end
 
     def by_distance(user_lat, user_lng)
-      order(Sequel.lit("(lat-#{user_lat})*(lat-#{user_lat})+(lng-#{user_lng})*(lng-#{user_lng})"))
+      order(Sequel.lit("(lat-(#{user_lat}))*(lat-(#{user_lat}))+(lng-(#{user_lng}))*(lng-(#{user_lng}))"))
     end
   end
 
   def distance(user_lat, user_lng)
-    Math.hypot(lat-user_lat, lng-user_lng)
+    (user_lat-lat)*(user_lat-lat)+(user_lng-lng)*(user_lng-lng)
   end
 
   def to_json(options = {})

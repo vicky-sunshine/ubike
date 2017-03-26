@@ -50,7 +50,7 @@ class YoubikeAPI < Sinatra::Base
         return JSON.pretty_generate({ "code": -2,  "result": []})
       end
 
-      if Station.available.full.count == Station.available.count
+      if Station.full.count == Station.available.count
         return JSON.pretty_generate({ "code": 1,  "result": []})
       end
 
