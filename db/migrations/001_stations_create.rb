@@ -7,7 +7,7 @@ Sequel.migration do
 
       String :sno
       String :sna
-      Interger :tot
+      Integer :tot
       Integer :sbi
       String :sarea
       String :mday
