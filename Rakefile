@@ -1,5 +1,5 @@
 require 'rake/testtask'
-Dir.glob('./{config,models,controllers}/init.rb').each do |file|
+Dir.glob('./{config,models,controllers,services,lib}/init.rb').each do |file|
   require file
 end
 
@@ -23,7 +23,7 @@ namespace :db do
   end
   desc 'Populate the database with test values'
   task :seed do
-    load './db/seeds/accounts.rb'
+    CreateStations.import(seed_file: 'stations.json')
   end
 end
 
