@@ -17,11 +17,11 @@ class YoubikeAPI < Sinatra::Base
     end
 
     def lat_is_invalid?(lat)
-      lat.nil? || lat.abs > 90
+      lat.nil? || lat.to_f.abs > 90
     end
 
     def lng_is_invalid?(lng)
-      lng.nil? || lng.abs > 180
+      lng.nil? || lng.to_f.abs > 180
     end
   end
 
@@ -36,8 +36,8 @@ class YoubikeAPI < Sinatra::Base
 
   get '/v1/ubike-station/taipei' do
     # ?lat=25.034153&lng=121.568509
-    lat = params['lat'].to_f
-    lng = params['lng'].to_f
+    lat = params['lat']
+    lng = params['lng']
 
     # begin
       # check lat lng valid
