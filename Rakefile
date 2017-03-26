@@ -23,7 +23,7 @@ namespace :db do
   end
   desc 'Populate the database with test values'
   task :seed do
-    CreateStations.import(seed_file: 'stations.json')
+    CreateStations.import(seed_file: 'sample_stations.json')
   end
 end
 

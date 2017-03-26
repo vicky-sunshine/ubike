@@ -15,11 +15,11 @@ Install the database.
 ```
 $ rake db:migrate
 ```
-If you want to add some data of youbike stations, you can import `db/seeds/stations.json` by running
+If you want to add some sample data of youbike stations, you can import `db/seeds/sample_stations.json` by running
 ```
 $ rake db:seed
 ```
-(see data details in `db/seeds/stations.json`)
+(see sample data details in `db/seeds/sample_stations.json`)
 
 Please copy the `config_env.rb.example` to `config_env.rb`
 ```

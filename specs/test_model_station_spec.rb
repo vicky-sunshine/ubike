@@ -6,7 +6,7 @@ describe 'Test Model Staion' do
 
   before do
     Station.dataset.delete
-    CreateStations.import(seed_file: 'stations.json')
+    CreateStations.import(seed_file: 'sample_stations.json')
   end
 
   it 'should return station available' do

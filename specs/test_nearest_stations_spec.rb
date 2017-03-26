@@ -3,7 +3,7 @@ require_relative './spec_helper'
 describe 'Test find station route with all full stations' do
   before do
     Station.dataset.delete
-    CreateStations.import(seed_file: 'stations.json')
+    CreateStations.import(seed_file: 'sample_stations.json')
   end
   it 'should return nearest station' do
     get "/v1/ubike-station/taipei?lat=25.034153&lng=121.568509"
