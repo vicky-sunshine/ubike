@@ -41,10 +41,10 @@ describe 'Test update station' do
     req_body = {
       records:[{
         sno: "0001",
-        sbi: 120,
+        sbi: "120",
         mday: "20170326204426",
-        bemp: 30,
-        act: 1}]
+        bemp: "30",
+        act: "1"}]
       }.to_json
 
     post_update_url = "/v1/update"

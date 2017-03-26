@@ -42,10 +42,10 @@ class YoubikeAPI < Sinatra::Base
       else
         UpdateStation.call(
           sno: e['sno'],
-          sbi: e['sbi'],
+          sbi: e['sbi'].to_i,
           mday: e['mday'],
-          bemp: e['bemp'],
-          act: e['act']
+          bemp: e['bemp'].to_i,
+          act: e['act'].to_i
         )
       end
     end
