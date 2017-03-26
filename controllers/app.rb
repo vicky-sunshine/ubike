@@ -33,7 +33,8 @@ class YoubikeAPI < Sinatra::Base
 
   post '/v1/update' do
     protected!
-    stations = JSON.parse(request.body.read)["records"]
+    data = JSON.parse(request.body.read)
+    stations = data['records']
     stations.each do |e|
       s = Station.by_sno(e['sno'])
       if s.nil?
