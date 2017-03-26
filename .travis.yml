@@ -1,0 +1,18 @@
+language: ruby
+
+sudo: required
+dist: trusty
+
+rvm:
+ - 2.3.1
+env:
+  - DB=sqlite
+
+branches:
+ only:
+  - master
+
+# uncomment this line if your project needs to run something other than `rake`:
+script:
+  - RACK_ENV=test bundle exec rake db:migrate
+  - bundle exec rake spec
