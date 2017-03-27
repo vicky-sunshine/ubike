@@ -33,22 +33,26 @@ class YoubikeAPI < Sinatra::Base
 
   post '/v1/update' do
     protected!
-    data = JSON.parse(request.body.read)
-    stations = data['records']
-    stations.each do |e|
-      s = Station.by_sno(e['sno'])
-      if s.nil?
-        s = Station.new(e)
-        s.save
-      else
-        UpdateStation.call(
-          sno: e['sno'],
-          sbi: e['sbi'].to_i,
-          mday: e['mday'],
-          bemp: e['bemp'].to_i,
-          act: e['act'].to_i
-        )
+    begin
+      data = JSON.parse(request.body.read)
+      stations = data['records']
+      stations.each do |e|
+        s = Station.by_sno(e['sno'])
+        if s.nil?
+          s = Station.new(e)
+          s.save
+        else
+          UpdateStation.call(
+            sno: e['sno'],
+            sbi: e['sbi'].to_i,
+            mday: e['mday'],
+            bemp: e['bemp'].to_i,
+            act: e['act'].to_i
+          )
+        end
       end
+    rescue => e
+      halt 400, JSON.pretty_generate({"error": e.to_s})
     end
     status 202
   end
