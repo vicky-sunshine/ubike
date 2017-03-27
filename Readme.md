@@ -1,4 +1,4 @@
-# Youbike API Server [![Build Status](https://travis-ci.org/vicky-sunshine/ubike.svg?branch=master)](https://travis-ci.org/vicky-sunshine/ubike)
+# Ubike API Server [![Build Status](https://travis-ci.org/vicky-sunshine/ubike.svg?branch=master)](https://travis-ci.org/vicky-sunshine/ubike)
 
 To find 2 nearest ubike stationns by given latitude and longitude in request parameters.
 
